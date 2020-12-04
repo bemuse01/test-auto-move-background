@@ -59,8 +59,8 @@ new Vue({
         },
         moveBackground(time){
             const width = this.util.width * this.param.w, height = this.util.height * this.param.h
-            this.back.x = this.util.simplex.noise2D(time * 0.02 / this.param.smooth, time * this.param.rd) * width
-            this.back.y = this.util.simplex.noise2D(time * 0.01 / this.param.smooth, time * this.param.rd) * height
+            this.back.x = this.util.simplex.noise2D(time * 0.02 / this.param.smooth, time * this.param.rd) * width / 2
+            this.back.y = this.util.simplex.noise2D(time * 0.01 / this.param.smooth, time * this.param.rd) * height / 2
         },
 
 
