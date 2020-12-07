@@ -15,7 +15,8 @@ new Vue({
                 w: 0.05,
                 h: 0.05,
                 smooth: 200,
-                rd: 0.00008
+                rd: 0.00008,
+                ratio: 2188 / 3500
             },
             back: {
                 x: 0,
@@ -44,23 +45,34 @@ new Vue({
 
         // background
         setBackgroundSize(){
-            const width = this.util.width * this.param.w, height = this.util.height * this.param.h
-            this.style.wrap.width = this.util.width + (width * 2) + 'px'
-            this.style.wrap.height = this.util.height + (height * 2) + 'px'
-            this.style.wrap.left = (this.util.width - (this.util.width + (width * 2))) / 2 + 'px'
-            this.style.wrap.top = (this.util.height - (this.util.height + (height * 2))) / 2 + 'px'
+            const width = this.util.width * this.param.w
 
-            this.style.back.width = this.util.width + (width * 2) + 'px'
-            this.style.back.height = this.util.height + (height * 2) + 'px'
+            const oWidth = this.util.width + (width * 2), oHeight = oWidth * this.param.ratio, height = oHeight * this.param.h
 
-            console.log(this.util.width * this.param.w * 2)
-            console.log(this.util.width * this.param.w)
-            console.log(this.util.width)
+            // this.style.wrap.width = this.util.width + (width * 2) + 'px'
+            // this.style.wrap.height = this.util.height + (height * 2) + 'px'
+            // this.style.wrap.left = (this.util.width - (this.util.width + (width * 2))) / 2 + 'px'
+            // this.style.wrap.top = (this.util.height - (this.util.height + (height * 2))) / 2 + 'px'
+            this.style.wrap.width = oWidth + 'px'
+            this.style.wrap.height = oHeight + 'px'
+            this.style.wrap.left = (this.util.width - oWidth) / 2 + 'px'
+            this.style.wrap.top = (this.util.height - oHeight) / 2 + 'px'
+
+            this.style.back.width = oWidth + 'px'
+            this.style.back.height = oHeight + 'px'
+
+            // console.log(this.util.width * this.param.w * 2)
+            // console.log(this.util.width * this.param.w)
+            // console.log(this.util.width)
+            console.log(width, oWidth)
         },
         moveBackground(time){
-            const width = this.util.width * this.param.w, height = this.util.height * this.param.h
-            this.back.x = this.util.simplex.noise2D(time * 0.02 / this.param.smooth, time * this.param.rd) * width / 2
-            this.back.y = this.util.simplex.noise2D(time * 0.01 / this.param.smooth, time * this.param.rd) * height / 2
+            const width = this.util.width * this.param.w
+
+            const oWidth = this.util.width + (width * 2), oHeight = oWidth * this.param.ratio, height = oHeight * this.param.h
+            
+            this.back.x = this.util.simplex.noise2D(time * 0.02 / this.param.smooth, time * this.param.rd) * width * 0.5
+            this.back.y = this.util.simplex.noise2D(time * 0.01 / this.param.smooth, time * this.param.rd) * height * 0.5
         },
 
 
