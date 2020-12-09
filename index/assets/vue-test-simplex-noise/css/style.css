@@ -30,3 +30,11 @@ div#background{
     height: 100%;
     background: url('../img/bg2.jpg') no-repeat center center / cover;
 }
+
+div#frame{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid red;
+}
