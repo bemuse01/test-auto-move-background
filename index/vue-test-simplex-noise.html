@@ -6,10 +6,12 @@
         <link href="assets/vue-test-simplex-noise/css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
+        <span>red line box = view size</span>
         <div id="wrap">
             <div id="background-wrap" :style="[style.wrap, backgroundStyle]">
                 <div id="background"></div>
             </div>
+            <div id="frame" :style="style.frame"></div>
         </div>
         <script src="assets/vue-test-simplex-noise/js/main.js"></script>
     </body>
